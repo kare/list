@@ -1,0 +1,87 @@
+[
+    {
+        "ShortTypeName": "String",
+        "Type": "string",
+        "TypeName": "StringList"
+    },
+    {
+        "ShortTypeName": "Int",
+        "Type": "int",
+        "TypeName": "IntList"
+    },
+    {
+        "ShortTypeName": "Uint",
+        "Type": "uint",
+        "TypeName": "UintList"
+    },
+    {
+        "ShortTypeName": "Uint8",
+        "Type": "uint8",
+        "TypeName": "Uint8List"
+    },
+    {
+        "ShortTypeName": "Uint16",
+        "Type": "uint16",
+        "TypeName": "Uint16List"
+    },
+    {
+        "ShortTypeName": "Uint32",
+        "Type": "uint32",
+        "TypeName": "Uint32List"
+    },
+    {
+        "ShortTypeName": "Uint64",
+        "Type": "uint64",
+        "TypeName": "Uint64List"
+    },
+    {
+        "ShortTypeName": "Int8",
+        "Type": "int8",
+        "TypeName": "Int8List"
+    },
+    {
+        "ShortTypeName": "Int16",
+        "Type": "int16",
+        "TypeName": "Int16List"
+    },
+    {
+        "ShortTypeName": "Int32",
+        "Type": "int32",
+        "TypeName": "Int32List"
+    },
+    {
+        "ShortTypeName": "Int64",
+        "Type": "int64",
+        "TypeName": "Int64List"
+    },
+    {
+        "ShortTypeName": "Float32",
+        "Type": "float32",
+        "TypeName": "Float32List"
+    },
+    {
+        "ShortTypeName": "Float64",
+        "Type": "float64",
+        "TypeName": "Float64List"
+    },
+    {
+        "ShortTypeName": "Complex64",
+        "Type": "complex64",
+        "TypeName": "Complex64List"
+    },
+    {
+        "ShortTypeName": "Complex128",
+        "Type": "complex128",
+        "TypeName": "Complex128List"
+    },
+    {
+        "ShortTypeName": "Byte",
+        "Type": "byte",
+        "TypeName": "ByteList"
+    },
+    {
+        "ShortTypeName": "Rune",
+        "Type": "rune",
+        "TypeName": "RuneList"
+    }
+]
