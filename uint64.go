@@ -22,7 +22,7 @@ func NewUint64With(values ...uint64) *Uint64List {
 
 // Equals checks list equality given other list. In order to be equal both lists
 // must be of same type.
-func (l Uint64List) Equals(other interface{}) bool {
+func (l *Uint64List) Equals(other interface{}) bool {
 	list, ok := other.(*Uint64List)
 	if !ok {
 		return false
@@ -50,23 +50,23 @@ func (l *Uint64List) AddAll(values ...uint64) {
 }
 
 // Get returns the uint64 element at given index.
-func (l Uint64List) Get(index int) uint64 {
+func (l *Uint64List) Get(index int) uint64 {
 	return l.values[index]
 }
 
 // Len returns the size of the list.
-func (l Uint64List) Len() int {
+func (l *Uint64List) Len() int {
 	return len(l.values)
 }
 
 // IsEmpty return true if list is empty, false otherwise.
-func (l Uint64List) IsEmpty() bool {
+func (l *Uint64List) IsEmpty() bool {
 	return len(l.values) == 0
 }
 
 // Contains returns true if given value is contained by the list, false
 // otherwise.
-func (l Uint64List) Contains(value uint64) bool {
+func (l *Uint64List) Contains(value uint64) bool {
 	for _, v := range l.values {
 		if v == value {
 			return true
@@ -76,10 +76,8 @@ func (l Uint64List) Contains(value uint64) bool {
 }
 
 // Slice returns uint64 slice of the elements contained within the list.
-func (l Uint64List) Slice() []uint64 {
-	result := make([]uint64, 0, len(l.values))
-	result = append(result, l.values...)
-	return result
+func (l *Uint64List) Slice() []uint64 {
+	return l.values
 }
 
 // Remove deletes the given value from the list. Returns true if the list

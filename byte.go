@@ -22,7 +22,7 @@ func NewByteWith(values ...byte) *ByteList {
 
 // Equals checks list equality given other list. In order to be equal both lists
 // must be of same type.
-func (l ByteList) Equals(other interface{}) bool {
+func (l *ByteList) Equals(other interface{}) bool {
 	list, ok := other.(*ByteList)
 	if !ok {
 		return false
@@ -50,23 +50,23 @@ func (l *ByteList) AddAll(values ...byte) {
 }
 
 // Get returns the byte element at given index.
-func (l ByteList) Get(index int) byte {
+func (l *ByteList) Get(index int) byte {
 	return l.values[index]
 }
 
 // Len returns the size of the list.
-func (l ByteList) Len() int {
+func (l *ByteList) Len() int {
 	return len(l.values)
 }
 
 // IsEmpty return true if list is empty, false otherwise.
-func (l ByteList) IsEmpty() bool {
+func (l *ByteList) IsEmpty() bool {
 	return len(l.values) == 0
 }
 
 // Contains returns true if given value is contained by the list, false
 // otherwise.
-func (l ByteList) Contains(value byte) bool {
+func (l *ByteList) Contains(value byte) bool {
 	for _, v := range l.values {
 		if v == value {
 			return true
@@ -76,10 +76,8 @@ func (l ByteList) Contains(value byte) bool {
 }
 
 // Slice returns byte slice of the elements contained within the list.
-func (l ByteList) Slice() []byte {
-	result := make([]byte, 0, len(l.values))
-	result = append(result, l.values...)
-	return result
+func (l *ByteList) Slice() []byte {
+	return l.values
 }
 
 // Remove deletes the given value from the list. Returns true if the list

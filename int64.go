@@ -22,7 +22,7 @@ func NewInt64With(values ...int64) *Int64List {
 
 // Equals checks list equality given other list. In order to be equal both lists
 // must be of same type.
-func (l Int64List) Equals(other interface{}) bool {
+func (l *Int64List) Equals(other interface{}) bool {
 	list, ok := other.(*Int64List)
 	if !ok {
 		return false
@@ -50,23 +50,23 @@ func (l *Int64List) AddAll(values ...int64) {
 }
 
 // Get returns the int64 element at given index.
-func (l Int64List) Get(index int) int64 {
+func (l *Int64List) Get(index int) int64 {
 	return l.values[index]
 }
 
 // Len returns the size of the list.
-func (l Int64List) Len() int {
+func (l *Int64List) Len() int {
 	return len(l.values)
 }
 
 // IsEmpty return true if list is empty, false otherwise.
-func (l Int64List) IsEmpty() bool {
+func (l *Int64List) IsEmpty() bool {
 	return len(l.values) == 0
 }
 
 // Contains returns true if given value is contained by the list, false
 // otherwise.
-func (l Int64List) Contains(value int64) bool {
+func (l *Int64List) Contains(value int64) bool {
 	for _, v := range l.values {
 		if v == value {
 			return true
@@ -76,10 +76,8 @@ func (l Int64List) Contains(value int64) bool {
 }
 
 // Slice returns int64 slice of the elements contained within the list.
-func (l Int64List) Slice() []int64 {
-	result := make([]int64, 0, len(l.values))
-	result = append(result, l.values...)
-	return result
+func (l *Int64List) Slice() []int64 {
+	return l.values
 }
 
 // Remove deletes the given value from the list. Returns true if the list

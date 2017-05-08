@@ -22,7 +22,7 @@ func NewUint8With(values ...uint8) *Uint8List {
 
 // Equals checks list equality given other list. In order to be equal both lists
 // must be of same type.
-func (l Uint8List) Equals(other interface{}) bool {
+func (l *Uint8List) Equals(other interface{}) bool {
 	list, ok := other.(*Uint8List)
 	if !ok {
 		return false
@@ -50,23 +50,23 @@ func (l *Uint8List) AddAll(values ...uint8) {
 }
 
 // Get returns the uint8 element at given index.
-func (l Uint8List) Get(index int) uint8 {
+func (l *Uint8List) Get(index int) uint8 {
 	return l.values[index]
 }
 
 // Len returns the size of the list.
-func (l Uint8List) Len() int {
+func (l *Uint8List) Len() int {
 	return len(l.values)
 }
 
 // IsEmpty return true if list is empty, false otherwise.
-func (l Uint8List) IsEmpty() bool {
+func (l *Uint8List) IsEmpty() bool {
 	return len(l.values) == 0
 }
 
 // Contains returns true if given value is contained by the list, false
 // otherwise.
-func (l Uint8List) Contains(value uint8) bool {
+func (l *Uint8List) Contains(value uint8) bool {
 	for _, v := range l.values {
 		if v == value {
 			return true
@@ -76,10 +76,8 @@ func (l Uint8List) Contains(value uint8) bool {
 }
 
 // Slice returns uint8 slice of the elements contained within the list.
-func (l Uint8List) Slice() []uint8 {
-	result := make([]uint8, 0, len(l.values))
-	result = append(result, l.values...)
-	return result
+func (l *Uint8List) Slice() []uint8 {
+	return l.values
 }
 
 // Remove deletes the given value from the list. Returns true if the list

@@ -22,7 +22,7 @@ func NewStringWith(values ...string) *StringList {
 
 // Equals checks list equality given other list. In order to be equal both lists
 // must be of same type.
-func (l StringList) Equals(other interface{}) bool {
+func (l *StringList) Equals(other interface{}) bool {
 	list, ok := other.(*StringList)
 	if !ok {
 		return false
@@ -50,23 +50,23 @@ func (l *StringList) AddAll(values ...string) {
 }
 
 // Get returns the string element at given index.
-func (l StringList) Get(index int) string {
+func (l *StringList) Get(index int) string {
 	return l.values[index]
 }
 
 // Len returns the size of the list.
-func (l StringList) Len() int {
+func (l *StringList) Len() int {
 	return len(l.values)
 }
 
 // IsEmpty return true if list is empty, false otherwise.
-func (l StringList) IsEmpty() bool {
+func (l *StringList) IsEmpty() bool {
 	return len(l.values) == 0
 }
 
 // Contains returns true if given value is contained by the list, false
 // otherwise.
-func (l StringList) Contains(value string) bool {
+func (l *StringList) Contains(value string) bool {
 	for _, v := range l.values {
 		if v == value {
 			return true
@@ -76,10 +76,8 @@ func (l StringList) Contains(value string) bool {
 }
 
 // Slice returns string slice of the elements contained within the list.
-func (l StringList) Slice() []string {
-	result := make([]string, 0, len(l.values))
-	result = append(result, l.values...)
-	return result
+func (l *StringList) Slice() []string {
+	return l.values
 }
 
 // Remove deletes the given value from the list. Returns true if the list

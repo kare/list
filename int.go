@@ -22,7 +22,7 @@ func NewIntWith(values ...int) *IntList {
 
 // Equals checks list equality given other list. In order to be equal both lists
 // must be of same type.
-func (l IntList) Equals(other interface{}) bool {
+func (l *IntList) Equals(other interface{}) bool {
 	list, ok := other.(*IntList)
 	if !ok {
 		return false
@@ -50,23 +50,23 @@ func (l *IntList) AddAll(values ...int) {
 }
 
 // Get returns the int element at given index.
-func (l IntList) Get(index int) int {
+func (l *IntList) Get(index int) int {
 	return l.values[index]
 }
 
 // Len returns the size of the list.
-func (l IntList) Len() int {
+func (l *IntList) Len() int {
 	return len(l.values)
 }
 
 // IsEmpty return true if list is empty, false otherwise.
-func (l IntList) IsEmpty() bool {
+func (l *IntList) IsEmpty() bool {
 	return len(l.values) == 0
 }
 
 // Contains returns true if given value is contained by the list, false
 // otherwise.
-func (l IntList) Contains(value int) bool {
+func (l *IntList) Contains(value int) bool {
 	for _, v := range l.values {
 		if v == value {
 			return true
@@ -76,10 +76,8 @@ func (l IntList) Contains(value int) bool {
 }
 
 // Slice returns int slice of the elements contained within the list.
-func (l IntList) Slice() []int {
-	result := make([]int, 0, len(l.values))
-	result = append(result, l.values...)
-	return result
+func (l *IntList) Slice() []int {
+	return l.values
 }
 
 // Remove deletes the given value from the list. Returns true if the list

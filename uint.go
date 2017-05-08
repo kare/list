@@ -22,7 +22,7 @@ func NewUintWith(values ...uint) *UintList {
 
 // Equals checks list equality given other list. In order to be equal both lists
 // must be of same type.
-func (l UintList) Equals(other interface{}) bool {
+func (l *UintList) Equals(other interface{}) bool {
 	list, ok := other.(*UintList)
 	if !ok {
 		return false
@@ -50,23 +50,23 @@ func (l *UintList) AddAll(values ...uint) {
 }
 
 // Get returns the uint element at given index.
-func (l UintList) Get(index int) uint {
+func (l *UintList) Get(index int) uint {
 	return l.values[index]
 }
 
 // Len returns the size of the list.
-func (l UintList) Len() int {
+func (l *UintList) Len() int {
 	return len(l.values)
 }
 
 // IsEmpty return true if list is empty, false otherwise.
-func (l UintList) IsEmpty() bool {
+func (l *UintList) IsEmpty() bool {
 	return len(l.values) == 0
 }
 
 // Contains returns true if given value is contained by the list, false
 // otherwise.
-func (l UintList) Contains(value uint) bool {
+func (l *UintList) Contains(value uint) bool {
 	for _, v := range l.values {
 		if v == value {
 			return true
@@ -76,10 +76,8 @@ func (l UintList) Contains(value uint) bool {
 }
 
 // Slice returns uint slice of the elements contained within the list.
-func (l UintList) Slice() []uint {
-	result := make([]uint, 0, len(l.values))
-	result = append(result, l.values...)
-	return result
+func (l *UintList) Slice() []uint {
+	return l.values
 }
 
 // Remove deletes the given value from the list. Returns true if the list

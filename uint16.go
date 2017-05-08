@@ -22,7 +22,7 @@ func NewUint16With(values ...uint16) *Uint16List {
 
 // Equals checks list equality given other list. In order to be equal both lists
 // must be of same type.
-func (l Uint16List) Equals(other interface{}) bool {
+func (l *Uint16List) Equals(other interface{}) bool {
 	list, ok := other.(*Uint16List)
 	if !ok {
 		return false
@@ -50,23 +50,23 @@ func (l *Uint16List) AddAll(values ...uint16) {
 }
 
 // Get returns the uint16 element at given index.
-func (l Uint16List) Get(index int) uint16 {
+func (l *Uint16List) Get(index int) uint16 {
 	return l.values[index]
 }
 
 // Len returns the size of the list.
-func (l Uint16List) Len() int {
+func (l *Uint16List) Len() int {
 	return len(l.values)
 }
 
 // IsEmpty return true if list is empty, false otherwise.
-func (l Uint16List) IsEmpty() bool {
+func (l *Uint16List) IsEmpty() bool {
 	return len(l.values) == 0
 }
 
 // Contains returns true if given value is contained by the list, false
 // otherwise.
-func (l Uint16List) Contains(value uint16) bool {
+func (l *Uint16List) Contains(value uint16) bool {
 	for _, v := range l.values {
 		if v == value {
 			return true
@@ -76,10 +76,8 @@ func (l Uint16List) Contains(value uint16) bool {
 }
 
 // Slice returns uint16 slice of the elements contained within the list.
-func (l Uint16List) Slice() []uint16 {
-	result := make([]uint16, 0, len(l.values))
-	result = append(result, l.values...)
-	return result
+func (l *Uint16List) Slice() []uint16 {
+	return l.values
 }
 
 // Remove deletes the given value from the list. Returns true if the list

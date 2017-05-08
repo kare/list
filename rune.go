@@ -22,7 +22,7 @@ func NewRuneWith(values ...rune) *RuneList {
 
 // Equals checks list equality given other list. In order to be equal both lists
 // must be of same type.
-func (l RuneList) Equals(other interface{}) bool {
+func (l *RuneList) Equals(other interface{}) bool {
 	list, ok := other.(*RuneList)
 	if !ok {
 		return false
@@ -50,23 +50,23 @@ func (l *RuneList) AddAll(values ...rune) {
 }
 
 // Get returns the rune element at given index.
-func (l RuneList) Get(index int) rune {
+func (l *RuneList) Get(index int) rune {
 	return l.values[index]
 }
 
 // Len returns the size of the list.
-func (l RuneList) Len() int {
+func (l *RuneList) Len() int {
 	return len(l.values)
 }
 
 // IsEmpty return true if list is empty, false otherwise.
-func (l RuneList) IsEmpty() bool {
+func (l *RuneList) IsEmpty() bool {
 	return len(l.values) == 0
 }
 
 // Contains returns true if given value is contained by the list, false
 // otherwise.
-func (l RuneList) Contains(value rune) bool {
+func (l *RuneList) Contains(value rune) bool {
 	for _, v := range l.values {
 		if v == value {
 			return true
@@ -76,10 +76,8 @@ func (l RuneList) Contains(value rune) bool {
 }
 
 // Slice returns rune slice of the elements contained within the list.
-func (l RuneList) Slice() []rune {
-	result := make([]rune, 0, len(l.values))
-	result = append(result, l.values...)
-	return result
+func (l *RuneList) Slice() []rune {
+	return l.values
 }
 
 // Remove deletes the given value from the list. Returns true if the list

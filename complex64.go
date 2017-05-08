@@ -22,7 +22,7 @@ func NewComplex64With(values ...complex64) *Complex64List {
 
 // Equals checks list equality given other list. In order to be equal both lists
 // must be of same type.
-func (l Complex64List) Equals(other interface{}) bool {
+func (l *Complex64List) Equals(other interface{}) bool {
 	list, ok := other.(*Complex64List)
 	if !ok {
 		return false
@@ -50,23 +50,23 @@ func (l *Complex64List) AddAll(values ...complex64) {
 }
 
 // Get returns the complex64 element at given index.
-func (l Complex64List) Get(index int) complex64 {
+func (l *Complex64List) Get(index int) complex64 {
 	return l.values[index]
 }
 
 // Len returns the size of the list.
-func (l Complex64List) Len() int {
+func (l *Complex64List) Len() int {
 	return len(l.values)
 }
 
 // IsEmpty return true if list is empty, false otherwise.
-func (l Complex64List) IsEmpty() bool {
+func (l *Complex64List) IsEmpty() bool {
 	return len(l.values) == 0
 }
 
 // Contains returns true if given value is contained by the list, false
 // otherwise.
-func (l Complex64List) Contains(value complex64) bool {
+func (l *Complex64List) Contains(value complex64) bool {
 	for _, v := range l.values {
 		if v == value {
 			return true
@@ -76,10 +76,8 @@ func (l Complex64List) Contains(value complex64) bool {
 }
 
 // Slice returns complex64 slice of the elements contained within the list.
-func (l Complex64List) Slice() []complex64 {
-	result := make([]complex64, 0, len(l.values))
-	result = append(result, l.values...)
-	return result
+func (l *Complex64List) Slice() []complex64 {
+	return l.values
 }
 
 // Remove deletes the given value from the list. Returns true if the list

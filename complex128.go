@@ -22,7 +22,7 @@ func NewComplex128With(values ...complex128) *Complex128List {
 
 // Equals checks list equality given other list. In order to be equal both lists
 // must be of same type.
-func (l Complex128List) Equals(other interface{}) bool {
+func (l *Complex128List) Equals(other interface{}) bool {
 	list, ok := other.(*Complex128List)
 	if !ok {
 		return false
@@ -50,23 +50,23 @@ func (l *Complex128List) AddAll(values ...complex128) {
 }
 
 // Get returns the complex128 element at given index.
-func (l Complex128List) Get(index int) complex128 {
+func (l *Complex128List) Get(index int) complex128 {
 	return l.values[index]
 }
 
 // Len returns the size of the list.
-func (l Complex128List) Len() int {
+func (l *Complex128List) Len() int {
 	return len(l.values)
 }
 
 // IsEmpty return true if list is empty, false otherwise.
-func (l Complex128List) IsEmpty() bool {
+func (l *Complex128List) IsEmpty() bool {
 	return len(l.values) == 0
 }
 
 // Contains returns true if given value is contained by the list, false
 // otherwise.
-func (l Complex128List) Contains(value complex128) bool {
+func (l *Complex128List) Contains(value complex128) bool {
 	for _, v := range l.values {
 		if v == value {
 			return true
@@ -76,10 +76,8 @@ func (l Complex128List) Contains(value complex128) bool {
 }
 
 // Slice returns complex128 slice of the elements contained within the list.
-func (l Complex128List) Slice() []complex128 {
-	result := make([]complex128, 0, len(l.values))
-	result = append(result, l.values...)
-	return result
+func (l *Complex128List) Slice() []complex128 {
+	return l.values
 }
 
 // Remove deletes the given value from the list. Returns true if the list
