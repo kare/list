@@ -19,6 +19,13 @@ func TestIntEquals(t *testing.T) {
 	if diff.Equals(same) {
 		t.Errorf("expected list %v and %v not to be equal", *diff, *same)
 	}
+	difflen := list.NewIntWith(1, 2, 3, 4)
+	if same.Equals(difflen) {
+		t.Error("lists of different len equal")
+	}
+	if diff.Equals(1) {
+		t.Error("list equals to different type")
+	}
 }
 
 func TestIntNew(t *testing.T) {
@@ -102,6 +109,9 @@ func TestIntRemove(t *testing.T) {
 	}
 	if l.Contains(2) {
 		t.Error("did not expect the list to contain 2")
+	}
+	if l.Remove(2) {
+		t.Error("value was already removed")
 	}
 }
 
