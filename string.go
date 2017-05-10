@@ -2,28 +2,28 @@
 
 package list // import "kkn.fi/list"
 
-// StringList holds an ordered collection of string's.
-type StringList struct {
+// String holds an ordered collection of string's.
+type String struct {
 	values []string
 }
 
-// NewString creates an empty list of StringList's.
-func NewString() *StringList {
-	return &StringList{}
+// NewString creates an empty list of String's.
+func NewString() *String {
+	return &String{}
 }
 
-// NewStringWith creates a list of StringList's filled with given
+// NewStringWith creates a list of String's filled with given
 // values.
-func NewStringWith(values ...string) *StringList {
-	return &StringList{
+func NewStringWith(values ...string) *String {
+	return &String{
 		values: values,
 	}
 }
 
 // Equals checks list equality given other list. In order to be equal both lists
 // must be of same type.
-func (l *StringList) Equals(other interface{}) bool {
-	list, ok := other.(*StringList)
+func (l *String) Equals(other interface{}) bool {
+	list, ok := other.(*String)
 	if !ok {
 		return false
 	}
@@ -40,33 +40,33 @@ func (l *StringList) Equals(other interface{}) bool {
 }
 
 // Add appends a value to the end of the list.
-func (l *StringList) Add(value string) {
+func (l *String) Add(value string) {
 	l.values = append(l.values, value)
 }
 
 // AddAll appends all given values to the end of the list.
-func (l *StringList) AddAll(values ...string) {
+func (l *String) AddAll(values ...string) {
 	l.values = append(l.values, values...)
 }
 
 // Get returns the string element at given index.
-func (l *StringList) Get(index int) string {
+func (l *String) Get(index int) string {
 	return l.values[index]
 }
 
 // Len returns the size of the list.
-func (l *StringList) Len() int {
+func (l *String) Len() int {
 	return len(l.values)
 }
 
 // IsEmpty return true if list is empty, false otherwise.
-func (l *StringList) IsEmpty() bool {
+func (l *String) IsEmpty() bool {
 	return len(l.values) == 0
 }
 
 // Contains returns true if given value is contained by the list, false
 // otherwise.
-func (l *StringList) Contains(value string) bool {
+func (l *String) Contains(value string) bool {
 	for _, v := range l.values {
 		if v == value {
 			return true
@@ -76,13 +76,13 @@ func (l *StringList) Contains(value string) bool {
 }
 
 // Slice returns string slice of the elements contained within the list.
-func (l *StringList) Slice() []string {
+func (l *String) Slice() []string {
 	return l.values
 }
 
 // Remove deletes the given value from the list. Returns true if the list
 // contained specified value, false otherwise.
-func (l *StringList) Remove(value string) bool {
+func (l *String) Remove(value string) bool {
 	for i, v := range l.values {
 		if v == value {
 			l.values = append(l.values[:i], l.values[i+1:]...)

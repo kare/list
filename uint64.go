@@ -2,28 +2,28 @@
 
 package list // import "kkn.fi/list"
 
-// Uint64List holds an ordered collection of uint64's.
-type Uint64List struct {
+// Uint64 holds an ordered collection of uint64's.
+type Uint64 struct {
 	values []uint64
 }
 
-// NewUint64 creates an empty list of Uint64List's.
-func NewUint64() *Uint64List {
-	return &Uint64List{}
+// NewUint64 creates an empty list of Uint64's.
+func NewUint64() *Uint64 {
+	return &Uint64{}
 }
 
-// NewUint64With creates a list of Uint64List's filled with given
+// NewUint64With creates a list of Uint64's filled with given
 // values.
-func NewUint64With(values ...uint64) *Uint64List {
-	return &Uint64List{
+func NewUint64With(values ...uint64) *Uint64 {
+	return &Uint64{
 		values: values,
 	}
 }
 
 // Equals checks list equality given other list. In order to be equal both lists
 // must be of same type.
-func (l *Uint64List) Equals(other interface{}) bool {
-	list, ok := other.(*Uint64List)
+func (l *Uint64) Equals(other interface{}) bool {
+	list, ok := other.(*Uint64)
 	if !ok {
 		return false
 	}
@@ -40,33 +40,33 @@ func (l *Uint64List) Equals(other interface{}) bool {
 }
 
 // Add appends a value to the end of the list.
-func (l *Uint64List) Add(value uint64) {
+func (l *Uint64) Add(value uint64) {
 	l.values = append(l.values, value)
 }
 
 // AddAll appends all given values to the end of the list.
-func (l *Uint64List) AddAll(values ...uint64) {
+func (l *Uint64) AddAll(values ...uint64) {
 	l.values = append(l.values, values...)
 }
 
 // Get returns the uint64 element at given index.
-func (l *Uint64List) Get(index int) uint64 {
+func (l *Uint64) Get(index int) uint64 {
 	return l.values[index]
 }
 
 // Len returns the size of the list.
-func (l *Uint64List) Len() int {
+func (l *Uint64) Len() int {
 	return len(l.values)
 }
 
 // IsEmpty return true if list is empty, false otherwise.
-func (l *Uint64List) IsEmpty() bool {
+func (l *Uint64) IsEmpty() bool {
 	return len(l.values) == 0
 }
 
 // Contains returns true if given value is contained by the list, false
 // otherwise.
-func (l *Uint64List) Contains(value uint64) bool {
+func (l *Uint64) Contains(value uint64) bool {
 	for _, v := range l.values {
 		if v == value {
 			return true
@@ -76,13 +76,13 @@ func (l *Uint64List) Contains(value uint64) bool {
 }
 
 // Slice returns uint64 slice of the elements contained within the list.
-func (l *Uint64List) Slice() []uint64 {
+func (l *Uint64) Slice() []uint64 {
 	return l.values
 }
 
 // Remove deletes the given value from the list. Returns true if the list
 // contained specified value, false otherwise.
-func (l *Uint64List) Remove(value uint64) bool {
+func (l *Uint64) Remove(value uint64) bool {
 	for i, v := range l.values {
 		if v == value {
 			l.values = append(l.values[:i], l.values[i+1:]...)

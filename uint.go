@@ -2,28 +2,28 @@
 
 package list // import "kkn.fi/list"
 
-// UintList holds an ordered collection of uint's.
-type UintList struct {
+// Uint holds an ordered collection of uint's.
+type Uint struct {
 	values []uint
 }
 
-// NewUint creates an empty list of UintList's.
-func NewUint() *UintList {
-	return &UintList{}
+// NewUint creates an empty list of Uint's.
+func NewUint() *Uint {
+	return &Uint{}
 }
 
-// NewUintWith creates a list of UintList's filled with given
+// NewUintWith creates a list of Uint's filled with given
 // values.
-func NewUintWith(values ...uint) *UintList {
-	return &UintList{
+func NewUintWith(values ...uint) *Uint {
+	return &Uint{
 		values: values,
 	}
 }
 
 // Equals checks list equality given other list. In order to be equal both lists
 // must be of same type.
-func (l *UintList) Equals(other interface{}) bool {
-	list, ok := other.(*UintList)
+func (l *Uint) Equals(other interface{}) bool {
+	list, ok := other.(*Uint)
 	if !ok {
 		return false
 	}
@@ -40,33 +40,33 @@ func (l *UintList) Equals(other interface{}) bool {
 }
 
 // Add appends a value to the end of the list.
-func (l *UintList) Add(value uint) {
+func (l *Uint) Add(value uint) {
 	l.values = append(l.values, value)
 }
 
 // AddAll appends all given values to the end of the list.
-func (l *UintList) AddAll(values ...uint) {
+func (l *Uint) AddAll(values ...uint) {
 	l.values = append(l.values, values...)
 }
 
 // Get returns the uint element at given index.
-func (l *UintList) Get(index int) uint {
+func (l *Uint) Get(index int) uint {
 	return l.values[index]
 }
 
 // Len returns the size of the list.
-func (l *UintList) Len() int {
+func (l *Uint) Len() int {
 	return len(l.values)
 }
 
 // IsEmpty return true if list is empty, false otherwise.
-func (l *UintList) IsEmpty() bool {
+func (l *Uint) IsEmpty() bool {
 	return len(l.values) == 0
 }
 
 // Contains returns true if given value is contained by the list, false
 // otherwise.
-func (l *UintList) Contains(value uint) bool {
+func (l *Uint) Contains(value uint) bool {
 	for _, v := range l.values {
 		if v == value {
 			return true
@@ -76,13 +76,13 @@ func (l *UintList) Contains(value uint) bool {
 }
 
 // Slice returns uint slice of the elements contained within the list.
-func (l *UintList) Slice() []uint {
+func (l *Uint) Slice() []uint {
 	return l.values
 }
 
 // Remove deletes the given value from the list. Returns true if the list
 // contained specified value, false otherwise.
-func (l *UintList) Remove(value uint) bool {
+func (l *Uint) Remove(value uint) bool {
 	for i, v := range l.values {
 		if v == value {
 			l.values = append(l.values[:i], l.values[i+1:]...)

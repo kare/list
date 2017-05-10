@@ -2,28 +2,28 @@
 
 package list // import "kkn.fi/list"
 
-// IntList holds an ordered collection of int's.
-type IntList struct {
+// Int holds an ordered collection of int's.
+type Int struct {
 	values []int
 }
 
-// NewInt creates an empty list of IntList's.
-func NewInt() *IntList {
-	return &IntList{}
+// NewInt creates an empty list of Int's.
+func NewInt() *Int {
+	return &Int{}
 }
 
-// NewIntWith creates a list of IntList's filled with given
+// NewIntWith creates a list of Int's filled with given
 // values.
-func NewIntWith(values ...int) *IntList {
-	return &IntList{
+func NewIntWith(values ...int) *Int {
+	return &Int{
 		values: values,
 	}
 }
 
 // Equals checks list equality given other list. In order to be equal both lists
 // must be of same type.
-func (l *IntList) Equals(other interface{}) bool {
-	list, ok := other.(*IntList)
+func (l *Int) Equals(other interface{}) bool {
+	list, ok := other.(*Int)
 	if !ok {
 		return false
 	}
@@ -40,33 +40,33 @@ func (l *IntList) Equals(other interface{}) bool {
 }
 
 // Add appends a value to the end of the list.
-func (l *IntList) Add(value int) {
+func (l *Int) Add(value int) {
 	l.values = append(l.values, value)
 }
 
 // AddAll appends all given values to the end of the list.
-func (l *IntList) AddAll(values ...int) {
+func (l *Int) AddAll(values ...int) {
 	l.values = append(l.values, values...)
 }
 
 // Get returns the int element at given index.
-func (l *IntList) Get(index int) int {
+func (l *Int) Get(index int) int {
 	return l.values[index]
 }
 
 // Len returns the size of the list.
-func (l *IntList) Len() int {
+func (l *Int) Len() int {
 	return len(l.values)
 }
 
 // IsEmpty return true if list is empty, false otherwise.
-func (l *IntList) IsEmpty() bool {
+func (l *Int) IsEmpty() bool {
 	return len(l.values) == 0
 }
 
 // Contains returns true if given value is contained by the list, false
 // otherwise.
-func (l *IntList) Contains(value int) bool {
+func (l *Int) Contains(value int) bool {
 	for _, v := range l.values {
 		if v == value {
 			return true
@@ -76,13 +76,13 @@ func (l *IntList) Contains(value int) bool {
 }
 
 // Slice returns int slice of the elements contained within the list.
-func (l *IntList) Slice() []int {
+func (l *Int) Slice() []int {
 	return l.values
 }
 
 // Remove deletes the given value from the list. Returns true if the list
 // contained specified value, false otherwise.
-func (l *IntList) Remove(value int) bool {
+func (l *Int) Remove(value int) bool {
 	for i, v := range l.values {
 		if v == value {
 			l.values = append(l.values[:i], l.values[i+1:]...)

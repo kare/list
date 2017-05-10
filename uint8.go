@@ -2,28 +2,28 @@
 
 package list // import "kkn.fi/list"
 
-// Uint8List holds an ordered collection of uint8's.
-type Uint8List struct {
+// Uint8 holds an ordered collection of uint8's.
+type Uint8 struct {
 	values []uint8
 }
 
-// NewUint8 creates an empty list of Uint8List's.
-func NewUint8() *Uint8List {
-	return &Uint8List{}
+// NewUint8 creates an empty list of Uint8's.
+func NewUint8() *Uint8 {
+	return &Uint8{}
 }
 
-// NewUint8With creates a list of Uint8List's filled with given
+// NewUint8With creates a list of Uint8's filled with given
 // values.
-func NewUint8With(values ...uint8) *Uint8List {
-	return &Uint8List{
+func NewUint8With(values ...uint8) *Uint8 {
+	return &Uint8{
 		values: values,
 	}
 }
 
 // Equals checks list equality given other list. In order to be equal both lists
 // must be of same type.
-func (l *Uint8List) Equals(other interface{}) bool {
-	list, ok := other.(*Uint8List)
+func (l *Uint8) Equals(other interface{}) bool {
+	list, ok := other.(*Uint8)
 	if !ok {
 		return false
 	}
@@ -40,33 +40,33 @@ func (l *Uint8List) Equals(other interface{}) bool {
 }
 
 // Add appends a value to the end of the list.
-func (l *Uint8List) Add(value uint8) {
+func (l *Uint8) Add(value uint8) {
 	l.values = append(l.values, value)
 }
 
 // AddAll appends all given values to the end of the list.
-func (l *Uint8List) AddAll(values ...uint8) {
+func (l *Uint8) AddAll(values ...uint8) {
 	l.values = append(l.values, values...)
 }
 
 // Get returns the uint8 element at given index.
-func (l *Uint8List) Get(index int) uint8 {
+func (l *Uint8) Get(index int) uint8 {
 	return l.values[index]
 }
 
 // Len returns the size of the list.
-func (l *Uint8List) Len() int {
+func (l *Uint8) Len() int {
 	return len(l.values)
 }
 
 // IsEmpty return true if list is empty, false otherwise.
-func (l *Uint8List) IsEmpty() bool {
+func (l *Uint8) IsEmpty() bool {
 	return len(l.values) == 0
 }
 
 // Contains returns true if given value is contained by the list, false
 // otherwise.
-func (l *Uint8List) Contains(value uint8) bool {
+func (l *Uint8) Contains(value uint8) bool {
 	for _, v := range l.values {
 		if v == value {
 			return true
@@ -76,13 +76,13 @@ func (l *Uint8List) Contains(value uint8) bool {
 }
 
 // Slice returns uint8 slice of the elements contained within the list.
-func (l *Uint8List) Slice() []uint8 {
+func (l *Uint8) Slice() []uint8 {
 	return l.values
 }
 
 // Remove deletes the given value from the list. Returns true if the list
 // contained specified value, false otherwise.
-func (l *Uint8List) Remove(value uint8) bool {
+func (l *Uint8) Remove(value uint8) bool {
 	for i, v := range l.values {
 		if v == value {
 			l.values = append(l.values[:i], l.values[i+1:]...)

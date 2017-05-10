@@ -2,28 +2,28 @@
 
 package list // import "kkn.fi/list"
 
-// Int16List holds an ordered collection of int16's.
-type Int16List struct {
+// Int16 holds an ordered collection of int16's.
+type Int16 struct {
 	values []int16
 }
 
-// NewInt16 creates an empty list of Int16List's.
-func NewInt16() *Int16List {
-	return &Int16List{}
+// NewInt16 creates an empty list of Int16's.
+func NewInt16() *Int16 {
+	return &Int16{}
 }
 
-// NewInt16With creates a list of Int16List's filled with given
+// NewInt16With creates a list of Int16's filled with given
 // values.
-func NewInt16With(values ...int16) *Int16List {
-	return &Int16List{
+func NewInt16With(values ...int16) *Int16 {
+	return &Int16{
 		values: values,
 	}
 }
 
 // Equals checks list equality given other list. In order to be equal both lists
 // must be of same type.
-func (l *Int16List) Equals(other interface{}) bool {
-	list, ok := other.(*Int16List)
+func (l *Int16) Equals(other interface{}) bool {
+	list, ok := other.(*Int16)
 	if !ok {
 		return false
 	}
@@ -40,33 +40,33 @@ func (l *Int16List) Equals(other interface{}) bool {
 }
 
 // Add appends a value to the end of the list.
-func (l *Int16List) Add(value int16) {
+func (l *Int16) Add(value int16) {
 	l.values = append(l.values, value)
 }
 
 // AddAll appends all given values to the end of the list.
-func (l *Int16List) AddAll(values ...int16) {
+func (l *Int16) AddAll(values ...int16) {
 	l.values = append(l.values, values...)
 }
 
 // Get returns the int16 element at given index.
-func (l *Int16List) Get(index int) int16 {
+func (l *Int16) Get(index int) int16 {
 	return l.values[index]
 }
 
 // Len returns the size of the list.
-func (l *Int16List) Len() int {
+func (l *Int16) Len() int {
 	return len(l.values)
 }
 
 // IsEmpty return true if list is empty, false otherwise.
-func (l *Int16List) IsEmpty() bool {
+func (l *Int16) IsEmpty() bool {
 	return len(l.values) == 0
 }
 
 // Contains returns true if given value is contained by the list, false
 // otherwise.
-func (l *Int16List) Contains(value int16) bool {
+func (l *Int16) Contains(value int16) bool {
 	for _, v := range l.values {
 		if v == value {
 			return true
@@ -76,13 +76,13 @@ func (l *Int16List) Contains(value int16) bool {
 }
 
 // Slice returns int16 slice of the elements contained within the list.
-func (l *Int16List) Slice() []int16 {
+func (l *Int16) Slice() []int16 {
 	return l.values
 }
 
 // Remove deletes the given value from the list. Returns true if the list
 // contained specified value, false otherwise.
-func (l *Int16List) Remove(value int16) bool {
+func (l *Int16) Remove(value int16) bool {
 	for i, v := range l.values {
 		if v == value {
 			l.values = append(l.values[:i], l.values[i+1:]...)

@@ -2,28 +2,28 @@
 
 package list // import "kkn.fi/list"
 
-// ByteList holds an ordered collection of byte's.
-type ByteList struct {
+// Byte holds an ordered collection of byte's.
+type Byte struct {
 	values []byte
 }
 
-// NewByte creates an empty list of ByteList's.
-func NewByte() *ByteList {
-	return &ByteList{}
+// NewByte creates an empty list of Byte's.
+func NewByte() *Byte {
+	return &Byte{}
 }
 
-// NewByteWith creates a list of ByteList's filled with given
+// NewByteWith creates a list of Byte's filled with given
 // values.
-func NewByteWith(values ...byte) *ByteList {
-	return &ByteList{
+func NewByteWith(values ...byte) *Byte {
+	return &Byte{
 		values: values,
 	}
 }
 
 // Equals checks list equality given other list. In order to be equal both lists
 // must be of same type.
-func (l *ByteList) Equals(other interface{}) bool {
-	list, ok := other.(*ByteList)
+func (l *Byte) Equals(other interface{}) bool {
+	list, ok := other.(*Byte)
 	if !ok {
 		return false
 	}
@@ -40,33 +40,33 @@ func (l *ByteList) Equals(other interface{}) bool {
 }
 
 // Add appends a value to the end of the list.
-func (l *ByteList) Add(value byte) {
+func (l *Byte) Add(value byte) {
 	l.values = append(l.values, value)
 }
 
 // AddAll appends all given values to the end of the list.
-func (l *ByteList) AddAll(values ...byte) {
+func (l *Byte) AddAll(values ...byte) {
 	l.values = append(l.values, values...)
 }
 
 // Get returns the byte element at given index.
-func (l *ByteList) Get(index int) byte {
+func (l *Byte) Get(index int) byte {
 	return l.values[index]
 }
 
 // Len returns the size of the list.
-func (l *ByteList) Len() int {
+func (l *Byte) Len() int {
 	return len(l.values)
 }
 
 // IsEmpty return true if list is empty, false otherwise.
-func (l *ByteList) IsEmpty() bool {
+func (l *Byte) IsEmpty() bool {
 	return len(l.values) == 0
 }
 
 // Contains returns true if given value is contained by the list, false
 // otherwise.
-func (l *ByteList) Contains(value byte) bool {
+func (l *Byte) Contains(value byte) bool {
 	for _, v := range l.values {
 		if v == value {
 			return true
@@ -76,13 +76,13 @@ func (l *ByteList) Contains(value byte) bool {
 }
 
 // Slice returns byte slice of the elements contained within the list.
-func (l *ByteList) Slice() []byte {
+func (l *Byte) Slice() []byte {
 	return l.values
 }
 
 // Remove deletes the given value from the list. Returns true if the list
 // contained specified value, false otherwise.
-func (l *ByteList) Remove(value byte) bool {
+func (l *Byte) Remove(value byte) bool {
 	for i, v := range l.values {
 		if v == value {
 			l.values = append(l.values[:i], l.values[i+1:]...)

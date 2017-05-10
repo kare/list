@@ -2,28 +2,28 @@
 
 package list // import "kkn.fi/list"
 
-// Uint32List holds an ordered collection of uint32's.
-type Uint32List struct {
+// Uint32 holds an ordered collection of uint32's.
+type Uint32 struct {
 	values []uint32
 }
 
-// NewUint32 creates an empty list of Uint32List's.
-func NewUint32() *Uint32List {
-	return &Uint32List{}
+// NewUint32 creates an empty list of Uint32's.
+func NewUint32() *Uint32 {
+	return &Uint32{}
 }
 
-// NewUint32With creates a list of Uint32List's filled with given
+// NewUint32With creates a list of Uint32's filled with given
 // values.
-func NewUint32With(values ...uint32) *Uint32List {
-	return &Uint32List{
+func NewUint32With(values ...uint32) *Uint32 {
+	return &Uint32{
 		values: values,
 	}
 }
 
 // Equals checks list equality given other list. In order to be equal both lists
 // must be of same type.
-func (l *Uint32List) Equals(other interface{}) bool {
-	list, ok := other.(*Uint32List)
+func (l *Uint32) Equals(other interface{}) bool {
+	list, ok := other.(*Uint32)
 	if !ok {
 		return false
 	}
@@ -40,33 +40,33 @@ func (l *Uint32List) Equals(other interface{}) bool {
 }
 
 // Add appends a value to the end of the list.
-func (l *Uint32List) Add(value uint32) {
+func (l *Uint32) Add(value uint32) {
 	l.values = append(l.values, value)
 }
 
 // AddAll appends all given values to the end of the list.
-func (l *Uint32List) AddAll(values ...uint32) {
+func (l *Uint32) AddAll(values ...uint32) {
 	l.values = append(l.values, values...)
 }
 
 // Get returns the uint32 element at given index.
-func (l *Uint32List) Get(index int) uint32 {
+func (l *Uint32) Get(index int) uint32 {
 	return l.values[index]
 }
 
 // Len returns the size of the list.
-func (l *Uint32List) Len() int {
+func (l *Uint32) Len() int {
 	return len(l.values)
 }
 
 // IsEmpty return true if list is empty, false otherwise.
-func (l *Uint32List) IsEmpty() bool {
+func (l *Uint32) IsEmpty() bool {
 	return len(l.values) == 0
 }
 
 // Contains returns true if given value is contained by the list, false
 // otherwise.
-func (l *Uint32List) Contains(value uint32) bool {
+func (l *Uint32) Contains(value uint32) bool {
 	for _, v := range l.values {
 		if v == value {
 			return true
@@ -76,13 +76,13 @@ func (l *Uint32List) Contains(value uint32) bool {
 }
 
 // Slice returns uint32 slice of the elements contained within the list.
-func (l *Uint32List) Slice() []uint32 {
+func (l *Uint32) Slice() []uint32 {
 	return l.values
 }
 
 // Remove deletes the given value from the list. Returns true if the list
 // contained specified value, false otherwise.
-func (l *Uint32List) Remove(value uint32) bool {
+func (l *Uint32) Remove(value uint32) bool {
 	for i, v := range l.values {
 		if v == value {
 			l.values = append(l.values[:i], l.values[i+1:]...)

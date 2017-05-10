@@ -2,28 +2,28 @@
 
 package list // import "kkn.fi/list"
 
-// RuneList holds an ordered collection of rune's.
-type RuneList struct {
+// Rune holds an ordered collection of rune's.
+type Rune struct {
 	values []rune
 }
 
-// NewRune creates an empty list of RuneList's.
-func NewRune() *RuneList {
-	return &RuneList{}
+// NewRune creates an empty list of Rune's.
+func NewRune() *Rune {
+	return &Rune{}
 }
 
-// NewRuneWith creates a list of RuneList's filled with given
+// NewRuneWith creates a list of Rune's filled with given
 // values.
-func NewRuneWith(values ...rune) *RuneList {
-	return &RuneList{
+func NewRuneWith(values ...rune) *Rune {
+	return &Rune{
 		values: values,
 	}
 }
 
 // Equals checks list equality given other list. In order to be equal both lists
 // must be of same type.
-func (l *RuneList) Equals(other interface{}) bool {
-	list, ok := other.(*RuneList)
+func (l *Rune) Equals(other interface{}) bool {
+	list, ok := other.(*Rune)
 	if !ok {
 		return false
 	}
@@ -40,33 +40,33 @@ func (l *RuneList) Equals(other interface{}) bool {
 }
 
 // Add appends a value to the end of the list.
-func (l *RuneList) Add(value rune) {
+func (l *Rune) Add(value rune) {
 	l.values = append(l.values, value)
 }
 
 // AddAll appends all given values to the end of the list.
-func (l *RuneList) AddAll(values ...rune) {
+func (l *Rune) AddAll(values ...rune) {
 	l.values = append(l.values, values...)
 }
 
 // Get returns the rune element at given index.
-func (l *RuneList) Get(index int) rune {
+func (l *Rune) Get(index int) rune {
 	return l.values[index]
 }
 
 // Len returns the size of the list.
-func (l *RuneList) Len() int {
+func (l *Rune) Len() int {
 	return len(l.values)
 }
 
 // IsEmpty return true if list is empty, false otherwise.
-func (l *RuneList) IsEmpty() bool {
+func (l *Rune) IsEmpty() bool {
 	return len(l.values) == 0
 }
 
 // Contains returns true if given value is contained by the list, false
 // otherwise.
-func (l *RuneList) Contains(value rune) bool {
+func (l *Rune) Contains(value rune) bool {
 	for _, v := range l.values {
 		if v == value {
 			return true
@@ -76,13 +76,13 @@ func (l *RuneList) Contains(value rune) bool {
 }
 
 // Slice returns rune slice of the elements contained within the list.
-func (l *RuneList) Slice() []rune {
+func (l *Rune) Slice() []rune {
 	return l.values
 }
 
 // Remove deletes the given value from the list. Returns true if the list
 // contained specified value, false otherwise.
-func (l *RuneList) Remove(value rune) bool {
+func (l *Rune) Remove(value rune) bool {
 	for i, v := range l.values {
 		if v == value {
 			l.values = append(l.values[:i], l.values[i+1:]...)

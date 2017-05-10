@@ -2,28 +2,28 @@
 
 package list // import "kkn.fi/list"
 
-// Complex128List holds an ordered collection of complex128's.
-type Complex128List struct {
+// Complex128 holds an ordered collection of complex128's.
+type Complex128 struct {
 	values []complex128
 }
 
-// NewComplex128 creates an empty list of Complex128List's.
-func NewComplex128() *Complex128List {
-	return &Complex128List{}
+// NewComplex128 creates an empty list of Complex128's.
+func NewComplex128() *Complex128 {
+	return &Complex128{}
 }
 
-// NewComplex128With creates a list of Complex128List's filled with given
+// NewComplex128With creates a list of Complex128's filled with given
 // values.
-func NewComplex128With(values ...complex128) *Complex128List {
-	return &Complex128List{
+func NewComplex128With(values ...complex128) *Complex128 {
+	return &Complex128{
 		values: values,
 	}
 }
 
 // Equals checks list equality given other list. In order to be equal both lists
 // must be of same type.
-func (l *Complex128List) Equals(other interface{}) bool {
-	list, ok := other.(*Complex128List)
+func (l *Complex128) Equals(other interface{}) bool {
+	list, ok := other.(*Complex128)
 	if !ok {
 		return false
 	}
@@ -40,33 +40,33 @@ func (l *Complex128List) Equals(other interface{}) bool {
 }
 
 // Add appends a value to the end of the list.
-func (l *Complex128List) Add(value complex128) {
+func (l *Complex128) Add(value complex128) {
 	l.values = append(l.values, value)
 }
 
 // AddAll appends all given values to the end of the list.
-func (l *Complex128List) AddAll(values ...complex128) {
+func (l *Complex128) AddAll(values ...complex128) {
 	l.values = append(l.values, values...)
 }
 
 // Get returns the complex128 element at given index.
-func (l *Complex128List) Get(index int) complex128 {
+func (l *Complex128) Get(index int) complex128 {
 	return l.values[index]
 }
 
 // Len returns the size of the list.
-func (l *Complex128List) Len() int {
+func (l *Complex128) Len() int {
 	return len(l.values)
 }
 
 // IsEmpty return true if list is empty, false otherwise.
-func (l *Complex128List) IsEmpty() bool {
+func (l *Complex128) IsEmpty() bool {
 	return len(l.values) == 0
 }
 
 // Contains returns true if given value is contained by the list, false
 // otherwise.
-func (l *Complex128List) Contains(value complex128) bool {
+func (l *Complex128) Contains(value complex128) bool {
 	for _, v := range l.values {
 		if v == value {
 			return true
@@ -76,13 +76,13 @@ func (l *Complex128List) Contains(value complex128) bool {
 }
 
 // Slice returns complex128 slice of the elements contained within the list.
-func (l *Complex128List) Slice() []complex128 {
+func (l *Complex128) Slice() []complex128 {
 	return l.values
 }
 
 // Remove deletes the given value from the list. Returns true if the list
 // contained specified value, false otherwise.
-func (l *Complex128List) Remove(value complex128) bool {
+func (l *Complex128) Remove(value complex128) bool {
 	for i, v := range l.values {
 		if v == value {
 			l.values = append(l.values[:i], l.values[i+1:]...)

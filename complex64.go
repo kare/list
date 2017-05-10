@@ -2,28 +2,28 @@
 
 package list // import "kkn.fi/list"
 
-// Complex64List holds an ordered collection of complex64's.
-type Complex64List struct {
+// Complex64 holds an ordered collection of complex64's.
+type Complex64 struct {
 	values []complex64
 }
 
-// NewComplex64 creates an empty list of Complex64List's.
-func NewComplex64() *Complex64List {
-	return &Complex64List{}
+// NewComplex64 creates an empty list of Complex64's.
+func NewComplex64() *Complex64 {
+	return &Complex64{}
 }
 
-// NewComplex64With creates a list of Complex64List's filled with given
+// NewComplex64With creates a list of Complex64's filled with given
 // values.
-func NewComplex64With(values ...complex64) *Complex64List {
-	return &Complex64List{
+func NewComplex64With(values ...complex64) *Complex64 {
+	return &Complex64{
 		values: values,
 	}
 }
 
 // Equals checks list equality given other list. In order to be equal both lists
 // must be of same type.
-func (l *Complex64List) Equals(other interface{}) bool {
-	list, ok := other.(*Complex64List)
+func (l *Complex64) Equals(other interface{}) bool {
+	list, ok := other.(*Complex64)
 	if !ok {
 		return false
 	}
@@ -40,33 +40,33 @@ func (l *Complex64List) Equals(other interface{}) bool {
 }
 
 // Add appends a value to the end of the list.
-func (l *Complex64List) Add(value complex64) {
+func (l *Complex64) Add(value complex64) {
 	l.values = append(l.values, value)
 }
 
 // AddAll appends all given values to the end of the list.
-func (l *Complex64List) AddAll(values ...complex64) {
+func (l *Complex64) AddAll(values ...complex64) {
 	l.values = append(l.values, values...)
 }
 
 // Get returns the complex64 element at given index.
-func (l *Complex64List) Get(index int) complex64 {
+func (l *Complex64) Get(index int) complex64 {
 	return l.values[index]
 }
 
 // Len returns the size of the list.
-func (l *Complex64List) Len() int {
+func (l *Complex64) Len() int {
 	return len(l.values)
 }
 
 // IsEmpty return true if list is empty, false otherwise.
-func (l *Complex64List) IsEmpty() bool {
+func (l *Complex64) IsEmpty() bool {
 	return len(l.values) == 0
 }
 
 // Contains returns true if given value is contained by the list, false
 // otherwise.
-func (l *Complex64List) Contains(value complex64) bool {
+func (l *Complex64) Contains(value complex64) bool {
 	for _, v := range l.values {
 		if v == value {
 			return true
@@ -76,13 +76,13 @@ func (l *Complex64List) Contains(value complex64) bool {
 }
 
 // Slice returns complex64 slice of the elements contained within the list.
-func (l *Complex64List) Slice() []complex64 {
+func (l *Complex64) Slice() []complex64 {
 	return l.values
 }
 
 // Remove deletes the given value from the list. Returns true if the list
 // contained specified value, false otherwise.
-func (l *Complex64List) Remove(value complex64) bool {
+func (l *Complex64) Remove(value complex64) bool {
 	for i, v := range l.values {
 		if v == value {
 			l.values = append(l.values[:i], l.values[i+1:]...)

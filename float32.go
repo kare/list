@@ -2,28 +2,28 @@
 
 package list // import "kkn.fi/list"
 
-// Float32List holds an ordered collection of float32's.
-type Float32List struct {
+// Float32 holds an ordered collection of float32's.
+type Float32 struct {
 	values []float32
 }
 
-// NewFloat32 creates an empty list of Float32List's.
-func NewFloat32() *Float32List {
-	return &Float32List{}
+// NewFloat32 creates an empty list of Float32's.
+func NewFloat32() *Float32 {
+	return &Float32{}
 }
 
-// NewFloat32With creates a list of Float32List's filled with given
+// NewFloat32With creates a list of Float32's filled with given
 // values.
-func NewFloat32With(values ...float32) *Float32List {
-	return &Float32List{
+func NewFloat32With(values ...float32) *Float32 {
+	return &Float32{
 		values: values,
 	}
 }
 
 // Equals checks list equality given other list. In order to be equal both lists
 // must be of same type.
-func (l *Float32List) Equals(other interface{}) bool {
-	list, ok := other.(*Float32List)
+func (l *Float32) Equals(other interface{}) bool {
+	list, ok := other.(*Float32)
 	if !ok {
 		return false
 	}
@@ -40,33 +40,33 @@ func (l *Float32List) Equals(other interface{}) bool {
 }
 
 // Add appends a value to the end of the list.
-func (l *Float32List) Add(value float32) {
+func (l *Float32) Add(value float32) {
 	l.values = append(l.values, value)
 }
 
 // AddAll appends all given values to the end of the list.
-func (l *Float32List) AddAll(values ...float32) {
+func (l *Float32) AddAll(values ...float32) {
 	l.values = append(l.values, values...)
 }
 
 // Get returns the float32 element at given index.
-func (l *Float32List) Get(index int) float32 {
+func (l *Float32) Get(index int) float32 {
 	return l.values[index]
 }
 
 // Len returns the size of the list.
-func (l *Float32List) Len() int {
+func (l *Float32) Len() int {
 	return len(l.values)
 }
 
 // IsEmpty return true if list is empty, false otherwise.
-func (l *Float32List) IsEmpty() bool {
+func (l *Float32) IsEmpty() bool {
 	return len(l.values) == 0
 }
 
 // Contains returns true if given value is contained by the list, false
 // otherwise.
-func (l *Float32List) Contains(value float32) bool {
+func (l *Float32) Contains(value float32) bool {
 	for _, v := range l.values {
 		if v == value {
 			return true
@@ -76,13 +76,13 @@ func (l *Float32List) Contains(value float32) bool {
 }
 
 // Slice returns float32 slice of the elements contained within the list.
-func (l *Float32List) Slice() []float32 {
+func (l *Float32) Slice() []float32 {
 	return l.values
 }
 
 // Remove deletes the given value from the list. Returns true if the list
 // contained specified value, false otherwise.
-func (l *Float32List) Remove(value float32) bool {
+func (l *Float32) Remove(value float32) bool {
 	for i, v := range l.values {
 		if v == value {
 			l.values = append(l.values[:i], l.values[i+1:]...)

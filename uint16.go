@@ -2,28 +2,28 @@
 
 package list // import "kkn.fi/list"
 
-// Uint16List holds an ordered collection of uint16's.
-type Uint16List struct {
+// Uint16 holds an ordered collection of uint16's.
+type Uint16 struct {
 	values []uint16
 }
 
-// NewUint16 creates an empty list of Uint16List's.
-func NewUint16() *Uint16List {
-	return &Uint16List{}
+// NewUint16 creates an empty list of Uint16's.
+func NewUint16() *Uint16 {
+	return &Uint16{}
 }
 
-// NewUint16With creates a list of Uint16List's filled with given
+// NewUint16With creates a list of Uint16's filled with given
 // values.
-func NewUint16With(values ...uint16) *Uint16List {
-	return &Uint16List{
+func NewUint16With(values ...uint16) *Uint16 {
+	return &Uint16{
 		values: values,
 	}
 }
 
 // Equals checks list equality given other list. In order to be equal both lists
 // must be of same type.
-func (l *Uint16List) Equals(other interface{}) bool {
-	list, ok := other.(*Uint16List)
+func (l *Uint16) Equals(other interface{}) bool {
+	list, ok := other.(*Uint16)
 	if !ok {
 		return false
 	}
@@ -40,33 +40,33 @@ func (l *Uint16List) Equals(other interface{}) bool {
 }
 
 // Add appends a value to the end of the list.
-func (l *Uint16List) Add(value uint16) {
+func (l *Uint16) Add(value uint16) {
 	l.values = append(l.values, value)
 }
 
 // AddAll appends all given values to the end of the list.
-func (l *Uint16List) AddAll(values ...uint16) {
+func (l *Uint16) AddAll(values ...uint16) {
 	l.values = append(l.values, values...)
 }
 
 // Get returns the uint16 element at given index.
-func (l *Uint16List) Get(index int) uint16 {
+func (l *Uint16) Get(index int) uint16 {
 	return l.values[index]
 }
 
 // Len returns the size of the list.
-func (l *Uint16List) Len() int {
+func (l *Uint16) Len() int {
 	return len(l.values)
 }
 
 // IsEmpty return true if list is empty, false otherwise.
-func (l *Uint16List) IsEmpty() bool {
+func (l *Uint16) IsEmpty() bool {
 	return len(l.values) == 0
 }
 
 // Contains returns true if given value is contained by the list, false
 // otherwise.
-func (l *Uint16List) Contains(value uint16) bool {
+func (l *Uint16) Contains(value uint16) bool {
 	for _, v := range l.values {
 		if v == value {
 			return true
@@ -76,13 +76,13 @@ func (l *Uint16List) Contains(value uint16) bool {
 }
 
 // Slice returns uint16 slice of the elements contained within the list.
-func (l *Uint16List) Slice() []uint16 {
+func (l *Uint16) Slice() []uint16 {
 	return l.values
 }
 
 // Remove deletes the given value from the list. Returns true if the list
 // contained specified value, false otherwise.
-func (l *Uint16List) Remove(value uint16) bool {
+func (l *Uint16) Remove(value uint16) bool {
 	for i, v := range l.values {
 		if v == value {
 			l.values = append(l.values[:i], l.values[i+1:]...)

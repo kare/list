@@ -2,28 +2,28 @@
 
 package list // import "kkn.fi/list"
 
-// Float64List holds an ordered collection of float64's.
-type Float64List struct {
+// Float64 holds an ordered collection of float64's.
+type Float64 struct {
 	values []float64
 }
 
-// NewFloat64 creates an empty list of Float64List's.
-func NewFloat64() *Float64List {
-	return &Float64List{}
+// NewFloat64 creates an empty list of Float64's.
+func NewFloat64() *Float64 {
+	return &Float64{}
 }
 
-// NewFloat64With creates a list of Float64List's filled with given
+// NewFloat64With creates a list of Float64's filled with given
 // values.
-func NewFloat64With(values ...float64) *Float64List {
-	return &Float64List{
+func NewFloat64With(values ...float64) *Float64 {
+	return &Float64{
 		values: values,
 	}
 }
 
 // Equals checks list equality given other list. In order to be equal both lists
 // must be of same type.
-func (l *Float64List) Equals(other interface{}) bool {
-	list, ok := other.(*Float64List)
+func (l *Float64) Equals(other interface{}) bool {
+	list, ok := other.(*Float64)
 	if !ok {
 		return false
 	}
@@ -40,33 +40,33 @@ func (l *Float64List) Equals(other interface{}) bool {
 }
 
 // Add appends a value to the end of the list.
-func (l *Float64List) Add(value float64) {
+func (l *Float64) Add(value float64) {
 	l.values = append(l.values, value)
 }
 
 // AddAll appends all given values to the end of the list.
-func (l *Float64List) AddAll(values ...float64) {
+func (l *Float64) AddAll(values ...float64) {
 	l.values = append(l.values, values...)
 }
 
 // Get returns the float64 element at given index.
-func (l *Float64List) Get(index int) float64 {
+func (l *Float64) Get(index int) float64 {
 	return l.values[index]
 }
 
 // Len returns the size of the list.
-func (l *Float64List) Len() int {
+func (l *Float64) Len() int {
 	return len(l.values)
 }
 
 // IsEmpty return true if list is empty, false otherwise.
-func (l *Float64List) IsEmpty() bool {
+func (l *Float64) IsEmpty() bool {
 	return len(l.values) == 0
 }
 
 // Contains returns true if given value is contained by the list, false
 // otherwise.
-func (l *Float64List) Contains(value float64) bool {
+func (l *Float64) Contains(value float64) bool {
 	for _, v := range l.values {
 		if v == value {
 			return true
@@ -76,13 +76,13 @@ func (l *Float64List) Contains(value float64) bool {
 }
 
 // Slice returns float64 slice of the elements contained within the list.
-func (l *Float64List) Slice() []float64 {
+func (l *Float64) Slice() []float64 {
 	return l.values
 }
 
 // Remove deletes the given value from the list. Returns true if the list
 // contained specified value, false otherwise.
-func (l *Float64List) Remove(value float64) bool {
+func (l *Float64) Remove(value float64) bool {
 	for i, v := range l.values {
 		if v == value {
 			l.values = append(l.values[:i], l.values[i+1:]...)
