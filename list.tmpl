@@ -7,14 +7,14 @@ type {{.TypeName}} struct {
 	values []{{.Type}}
 }
 
-// New{{.ShortTypeName}} creates an empty list of {{.TypeName}}'s.
-func New{{.ShortTypeName}}() *{{.TypeName}} {
+// New{{.TypeName}} creates an empty list of {{.TypeName}}'s.
+func New{{.TypeName}}() *{{.TypeName}} {
 	return &{{.TypeName}}{}
 }
 
-// New{{.ShortTypeName}}With creates a list of {{.TypeName}}'s filled with given
+// New{{.TypeName}}With creates a list of {{.TypeName}}'s filled with given
 // values.
-func New{{.ShortTypeName}}With(values ...{{.Type}}) *{{.TypeName}} {
+func New{{.TypeName}}With(values ...{{.Type}}) *{{.TypeName}} {
 	return &{{.TypeName}}{
 		values: values,
 	}
